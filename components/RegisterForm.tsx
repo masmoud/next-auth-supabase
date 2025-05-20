@@ -1,14 +1,26 @@
 "use client";
+import { signUp } from "@/actions/auth";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import AuthButton from "./AuthButton";
 
 const RegisterForm = () => {
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
+    const router = useRouter();
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setLoading(true);
         setError(null);
+
+        const fd = new FormData(event.currentTarget);
+        const result = await signUp(fd);
+
+        if (result.status === "success") {
+            router.push("/login");
+        } else {
+            setError(result.message);
+        }
 
         setLoading(false);
     };
