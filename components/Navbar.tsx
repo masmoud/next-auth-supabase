@@ -30,7 +30,7 @@ const Navbar = async () => {
                     ) : (
                         <>
                             <div className="flex items-center gap-x-2 text-sm">
-                                {user?.email?.slice(0, 10)}
+                                {user?.user_metadata?.user_name}
                             </div>
                             <Logout />
                         </>
