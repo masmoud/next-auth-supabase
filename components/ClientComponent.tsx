@@ -24,7 +24,7 @@ export default function ClientComponent() {
 
     return (
         <>
-            <h2>Welcome, {user?.user_metadata.user_name || "Guest"}</h2>
+            <h2>Welcome, {user?.user_metadata.username || "Guest"}</h2>
         </>
     );
 }
